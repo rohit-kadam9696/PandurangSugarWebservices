@@ -1,0 +1,55 @@
+.tendertermsandConditions_foregroundcolor{
+	color: red;
+}
+.submitbutton {
+    padding: 12px 38px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #f0bcb4;
+    color: white;
+    border: none;
+    outline: none;
+	display: table;
+    cursor: pointer;
+    margin: 45px auto 31px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.submitbutton:hover {
+	background:#8b5c7e;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-o-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+
+.set_margin
+{
+	margin-top: 6%;
+}
+
+.col12margintop
+{
+	margin-top: 2%;
+}
+
+.panel-body {
+    border: 1px solid;
+    border-color: #54a3ed;
+    box-shadow: 5px 10px #54a3ed;
+}
+
+.panel-heading
+{
+	padding: 1px 15px !important;
+}
+
+.txtupupper
+{
+	text-transform: uppercase;
+}

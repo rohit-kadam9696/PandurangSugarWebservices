@@ -1,0 +1,301 @@
+-- Create table
+create table APP_M_MENU
+(
+  ngroupid       NUMBER,
+  vgroupname     NVARCHAR2(100),
+  vstatus_active VARCHAR2(1) default 1
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column APP_M_MENU.vstatus_active
+  is '1: Active, 2: Deactive';
+  
+-- Create table
+create table APP_M_SUBMENU
+(
+  nid            NUMBER not null,
+  vname          NVARCHAR2(60),
+  vurl           VARCHAR2(50),
+  nparentid      NUMBER,
+  ninner         NUMBER,
+  ngroupid       NUMBER,
+  norder_android NUMBER,
+  vstatus_active VARCHAR2(2) default 1
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column APP_M_SUBMENU.vstatus_active
+  is '1: Active, 2: Deactive';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_M_SUBMENU
+  add constraint PERMISSION_PK primary key (NID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table APP_M_SUBMENU_ROLE
+(
+  nid           NUMBER not null,
+  nuser_role_id NUMBER not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_M_SUBMENU_ROLE
+  add constraint NID_ROLID primary key (NID, NUSER_ROLE_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table APP_M_USER_MASTER
+(
+  nuser_name       NUMBER not null,
+  vuser_name       VARCHAR2(100),
+  vfull_name       VARCHAR2(250),
+  npassword        VARCHAR2(20),
+  vactive          VARCHAR2(1) default 'Y',
+  ndept_id         NUMBER,
+  vfull_name_local VARCHAR2(250),
+  nuser_role_id    NUMBER,
+  nlocation_id     NUMBER,
+  nmobile_no       NUMBER(10),
+  nsug_type_id     NUMBER(2)
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_M_USER_MASTER
+  add constraint NUN primary key (NUSER_NAME)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table APP_M_USER_ROLE_MASTER
+(
+  nuser_role_id NUMBER not null,
+  vuser_role    VARCHAR2(50)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_M_USER_ROLE_MASTER
+  add constraint APP_U_ID primary key (NUSER_ROLE_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table APP_T_OTP
+(
+  notp_id        NUMBER(8) not null,
+  votp           VARCHAR2(20),
+  nmobile_no     VARCHAR2(10),
+  dgenrated_date DATE,
+  dexprie_date   DATE,
+  vstatus        VARCHAR2(1)
+)
+tablespace SYSTEM
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column APP_T_OTP.vstatus
+  is '1:  Created 2:Used 3:Expired';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_T_OTP
+  add constraint OTPID primary key (NOTP_ID)
+  using index 
+  tablespace SYSTEM
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table APP_T_USER_TRACKER
+(
+  nuserid        NUMBER,
+  vimei          VARCHAR2(25),
+  vuniquestring  NVARCHAR2(25),
+  vuniquestring2 NVARCHAR2(25)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_T_USER_TRACKER
+  add constraint LOGIN_UK unique (NUSERID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Create table
+create table APP_T_VESION
+(
+  nversionid   NUMBER not null,
+  vversionname VARCHAR2(15),
+  vupdate      VARCHAR2(1),
+  vcomplusory  VARCHAR2(1),
+  vhead        NVARCHAR2(50),
+  vmessage     NVARCHAR2(250)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column APP_T_VESION.vupdate
+  is 'Y: Yes N : No';
+comment on column APP_T_VESION.vcomplusory
+  is 'Y: Yes N : No';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table APP_T_VESION
+  add constraint CANEAPPVERSION primary key (NVERSIONID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+
+
+-------------------------------------------------------------------------------------------------------
+-- Create sequence 
+create sequence APP_OTP_SEQ
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 43
+increment by 1
+nocache;

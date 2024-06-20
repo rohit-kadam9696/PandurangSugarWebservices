@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebContent/home.jsp=UTF-8
+encoding//app/com/twd/pandurangsugar/android/dao/CaneHarvestingDao.java=UTF-8
+encoding//app/com/twd/pandurangsugar/android/dao/FertDao.java=UTF-8
+encoding//app/com/twd/pandurangsugar/android/dao/MasterDataLoadDao.java=UTF-8
+encoding//app/com/twd/pandurangsugar/android/dao/NumberSystemDao.java=UTF-8
+encoding//app/com/twd/pandurangsugar/android/dao/SaveHarvestingDao.java=UTF-8
+encoding//app/com/twd/pandurangsugar/android/service/CaneHarvestingService.java=UTF-8
+encoding//src/com/twd/pandurangsugar/both/constant/ConstantMessage.java=UTF-8
+encoding//src/com/twd/pandurangsugar/both/constant/ConstantVeriables.java=UTF-8

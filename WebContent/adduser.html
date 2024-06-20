@@ -1,0 +1,29 @@
+<form action=""  method="post" class="form-horizontal" id="userdetails" name="userdetails">
+<div class="col-lg-12">
+    <header class="panel-heading">
+			System User Details
+	</header>
+	 <div class="col-lg-12" style="margin-top: 1em">
+					    <div class="form-group has-success">
+                        			<label class="col-lg-2 control-label  req_lbl"> User Code</label>
+                         			<div class="col-lg-4"> 
+                         			 		 <input type="text"   name="nuserName" id="nuserName" class="form-control" ng-model="nuserName"  ng-required="required">
+                                     		  <span class="error" ng-show="userdetails.nuserName.$error.required">User Code Required!</span>
+                                     </div>
+                                     	<label class="col-lg-2 control-label  req_lbl"> User Name</label>
+                         			<div class="col-lg-4"> 
+                         			 		 <input type="text"   name="vuserName" id="vuserName" class="form-control" ng-model="vuserName" ng-required="required">
+                                     		  <span class="error" ng-show="userdetails.vuserName.$error.required">User Name Required!</span>
+                                     </div>
+                                   <input type="hidden" id="colorId"  name="colorId" value="">
+                                   <div></div>
+                                <div class="form-group" style="margin-top: 4%;">
+                                    <div class="col-lg-offset-5 col-lg-12">
+		                               		<button class="btn btn-primary" type="button" ng-disabled="userdetails.$invalid" ng-click="test()">Save</button>
+		                                    <a href="viewColor"><button class="btn btn-warning" type="button"> <i class="glyphicon glyphicon-eye-open" style="color: white;"></i> View Details</button></a>
+                                    </div>
+                                </div>
+   						   </div>
+  					</div>
+</div>
+</form>
